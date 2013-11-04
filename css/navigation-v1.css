@@ -1,0 +1,12 @@
+/** CSS document navigation betweeen panels**/
+#startscreen, #boardscreen, .leftside {
+	display: none;
+}
+
+.table-hover tbody tr:hover>td, .table-hover tbody tr:hover>th {
+	cursor: pointer;
+}
+
+#userList li {
+	cursor: pointer;
+}

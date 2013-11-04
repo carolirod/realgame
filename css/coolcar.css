@@ -1,0 +1,39 @@
+#wrapper {
+	width: 80%;
+}
+
+#start-screen-btn {
+	padding: 25%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	margin: 5%;
+	font-size: 26px;
+	font-weight: 800;
+}
+
+#inner {
+	width: 100%;
+	overflow: hidden;
+	left: 0;
+}
+#carousel-hahmo img {
+	cursor: url(../img/pointer.png), auto;
+}
+
+#questions .row-fluid {
+	display: inline-block;
+}
+
+.extrawrap {
+	min-width: 100px;
+	min-height: 150px;
+}
+
+.extrawrap img {
+	cursor: pointer;
+	cursor: url(../img/pointer.png), auto;
+	min-width: 150px;	
+	min-height: 150px;
+	max-height: 150px;
+	max-width: 200px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat with socket.io and node.js</title>
+	<link rel="stylesheet" type="text/css" href="app.css">	
+</head>
+<body>
+	<div id="nickWrap">
+		<p>Username:</p>
+		<p id="nickError"></p>
+		<form id="setNick">
+			<input size="35" id="nickname"></input>
+			<input type="submit"></input>
+		</form>
+	</div>
+
+
+	<div id="contentWrap">
+		<div id="chatWrap">
+			<div id="chat"></div>
+			<form id="send-message">
+				<input size="35" id="message"></input>
+				<input type="submit"></input>
+			</form>
+		</div>
+		<div id="users"></div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		jQuery(function($){
+			var socket = io.connect();
+
+			var $nickForm = $('#setNick');
+			var $nickError = $('#nickError');
+			var $nickBox = $('#nickname');
+			var $users = $('#users');
+			var $messageForm = $('#send-message');
+			var $messageBox = $('#message');
+			var $chat = $('#chat');
+			
+
+			$nickForm.submit(function(e){
+				e.preventDefault();
+				socket.emit('new user', $nickBox.val(), function(data){
+					//respond arrives to client
+					if(data){
+						$('#nickWrap').hide();
+						$('#contentWrap').show();
+					} else {
+						$nickError.html('That username is already taken, try again!');
+					}
+				});
+				$nickBox.val('');
+			});
+
+			//displaying the usernames' array
+			socket.on('usernames', function(data){
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
+					html += data[i] + '<br/>';
+				}
+				$users.html(html);
+			});
+
+			//every time the submit button is pressed
+			$messageForm.submit(function(e){
+				//prevent the default refresh of the page
+				e.preventDefault();
+				/* Send it to the server
+				socket.emit()
+				name the event: send message
+				---data we are sending--- IMPORTANT ---
+				*/
+				socket.emit('send message', $messageBox.val(), function(data){
+					$chat.append('<span class="error">'+data+'</span>');
+				});
+				//empty the input box
+				$messageBox.val('');
+			});
+			
+			//receive the message on the client side
+			socket.on('new message', function(data){
+				//handle the data received
+				$chat.append('<span class="msg"><b>'+ data.nick + ": </b>"+ data.msg+"<br/></span>");
+			});
+
+			socket.on('whisper', function(data){
+				$chat.append('<span class="whisper"><b>'+ data.nick + ": </b>"+ data.msg+"<br/></span>");
+			});
+		});
+	</script>
+	
+</body>
+</html>

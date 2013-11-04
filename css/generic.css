@@ -1,0 +1,67 @@
+/** CSS document general **/
+/*@import url("base/base.css");*/
+@import url("navigation.css");
+@import url("skin.css");
+@import url("coolcar.css");
+
+body {
+	margin: 0;
+	text-align: left;
+	cursor: url(../img/cursor.png), auto;
+}
+button:hover{
+	cursor: url(../img/pointer.png), auto;
+}
+#start-screen-btn {
+	cursor: url(../img/pointer.png), auto;
+}
+
+.inst {
+	font-style: italic;
+	color: #666666;
+}
+
+.next {
+	float: right;
+}
+						/* LONG and TALL BUTTONS*/
+.long-btn {
+	padding-left: 25%;
+	padding-right: 25%;
+}
+
+.previous {
+	float: left;
+}
+
+#msg {
+	font-style: italic;
+	color: gray;
+}
+
+#loginscreen {
+	margin-top: 5%;
+}
+
+#welcomeIMG {
+	width: 25%;
+	margin-left: 70%;
+}
+
+/* Control panel */
+#cp {
+	background: rgba(0, 0, 0, 0.25);	
+	margin-bottom: 2%;
+}
+#nameboard, #action, #character {
+	opacity: 1.0;
+	display: inline-block;
+	padding: 2%;
+	padding-right: 5%;
+}
+#character p {
+	margin: 0;
+}
+#hahmosi {
+	width: 30%;
+}
