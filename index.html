@@ -34,16 +34,25 @@
 		<div class="row-fluid" id="loginscreen">
 			<div class="span4">
 				<img src="http://www.hasbro.com/games/discover/guesswho/images/guesswho_1.jpg" class="img-responsive" />
-				<h4>Pelin ohjeet</h4>
-				<p class="inst">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis dignissim lectus eget placerat. Etiam rhoncus libero a urna ullamcorper convallis. Fusce semper tellus metus, id dignissim ante tincidunt ut. In iaculis euismod pretium. Integer tempor felis at convallis fermentum. Nulla malesuada iaculis eros, ut rutrum ipsum aliquet nec. <br/> Curabitur vehicula risus ante, laoreet ornare tortor porttitor eget. Nulla in nunc ultricies, dignissim nisl ut, molestie elit. Suspendisse elementum dolor ac cursus porta. Integer libero nisl, pharetra sit amet risus non, rhoncus porttitor nulla. <br/>Curabitur adipiscing, tellus at sagittis placerat, libero sapien dignissim massa, in fermentum velit urna eget quam. Nunc faucibus libero sit amet dui mattis lobortis. Nunc a interdum odio. Nunc suscipit et leo sed tempus. Vivamus nibh lectus, placerat at interdum adipiscing, lobortis ut neque. Proin vulputate dui porta, vulputate elit id, suscipit justo.
-				</p>
+				<h4>Peliohjeet</h4>
+				<!--<iframe src="instructions.html">
+				</iframe>-->
+				<div id="scroll-ins">
+					<p class="inst">
+					- Arvaa kuka on arvauspeli, joka pohjautuu samannimiseen lautapeliin. Peli aloitetaan valitsemalla nimimerkki sekä hahmo, jonka haluat vastustajasi arvaavan. Tämän jälkeen kirjaudutaan peliin.
+					Aloitusnäytöllä näet listan pelaajista, joista valitset itsellesi vastustajan. Vastapelaajan hyväksyttyä pelihaaste, on aika aloittaa peli. Aloitusvuoro on haasteen esittäjällä.
+					<br/><br/>
+					- Pelinäytöllä näet taulukon, jossa on joukko erinäköisiä hahmoja. Pelin ideana on arvata, minkä hahmon vastapelaaja on valinnut esittämällä kysymyksiä hahmon ominaisuuksista. Kysymykset tulee asettaa niin, että niihin voidaan vastata kyllä tai ei. Kysymykset voivat olla esimerkiksi ”onko hahmollasi ruskeat hiukset?” tai ”onko hahmollasi siniset silmät?”. Valitse sivuvalikosta haluamasi kysyttävä ruumiinosa ja sen ominaisuus. Saatuasi vastauksen vastapelaajalta, voit poistaa taulukosta ne hahmot, jotka eivät sovi saamaasi vastaukseen. 
+					<br/><br/>
+					- Tämän jälkeen vuoro siirtyy vastapelaajalle. Hänen kysymyksensä ilmaantuu näytöllesi. Vertaa kysymystä valitsemaasi hahmoon ja vastaa kysymykseen sen mukaan. Kysymyksiä esitetään siihen asti kunnes toinen pelaajista haluaa yrittää arvata vastapelaajan hahmoa. Arvaaminen tapahtuu valitsemalla arvattava hahmo taulukosta. Pelaaja, joka arvaa oikean hahmon ensimmäisenä, voittaa pelin.
+					</p>
+				</div>
 			</div>
 			<div class="span8">
 				
 				<!--<legend>Kirjaudu ja pitää hauskaa,</legend>-->
 				<form id="userForm">
-					<h4>1) Valitse sinun hahmosi nimi:</h4>
+					<h4>1) Valitse sinun hahmosi nimi</h4>
 					<input type="text" id="userName" placeholder="Kirjoittaa tähän..." />	
 					<span class="help-block">Esim. Liisa, Ansku, Riitta...</span>
 					<div id="userError"></div>
@@ -69,7 +78,7 @@
 						</div>
 					</div>
 					<div id="charError"></div>
-					<input type="submit" class="btn btn-info" id="start-screen-btn" value="Aloittaa peli"></button>
+					<input type="submit" class="btn btn-info" id="start-screen-btn" value="Aloita peli"></button>
 				</form>
 				
 			</div>
@@ -77,161 +86,174 @@
 
 		<!-- startgame screen-->
 		<div class="row-fluid" id="startscreen">
-			<div class="span5">
+			<div class="span12">
 				<div id="welcomeIMG"></div>
 				<span id="welcoming"></span>
 				<h4>Verkossa käyttäjät</h4>
 				<ul id="userList">
 				</ul>
+				<button id="play" type="submit" class="btn btn-info long-btn">Pelaa</button>
+				<div id="select-error"></div>
 			</div>
-
-			<div class="span7">
-
-
-			</div>
-		<div class="row-fluid">
-			<div class="span12">
-				<button id="play" type="submit" class="btn long-btn">Pelaa</button>
-			</div>
-			<div id="select-error"></div>
-		</div>
-
-		</div> <!-- finish row -->
+		</div> <!-- finish row for startgame screen-->
 
 
 		<div id="boardscreen"><!--  board screen -->
 			
-			<div class="row-fluid" id="cp">
-				<div class="span4">
-					<div id="nameboard"></div>
+			<div class="row-fluid"><!-- Control panel-->
+				<div class="span6">
+					<div id="instructions"></div>
 				</div>
-				<div class="span4">
-					<div id="action"></div>
-					<div id="msg"><!--message--></div>
-				</div>
-				<div class="span4">
-					<div id="character">
-						<p>Sinun hahmosi</p>
-						<div id="hahmosi">
-						<!--the hahmo -->
-						</div>
-					</div>
-				</div>
-			</div>
+			</div><!-- end of control panel -->
 
 			<div id="row-fluid">
 				<div class="span8" id="board"><!-- game board -->
 					<div class="row-fluid">
 						<div class="span12">
 							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
+							<img src="img/hahmo (1).jpg" width="150" />
+							<img src="img/hahmo (2).jpg" width="150" />
+							<img src="img/hahmo (3).jpg" width="150" />
 						</div>
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
+							<img src="img/hahmo (4).jpg" width="150" />
+							<img src="img/hahmo (5).jpg" width="150" />
+							<img src="img/hahmo (6).jpg" width="150" />
+							<img src="img/hahmo (7).jpg" width="150" />
 						</div>
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
+							<img src="img/hahmo (10).jpg" width="150" />
+							<img src="img/hahmo (8).jpg" width="150" />
+							<img src="img/hahmo (9).jpg" width="150" />
+							<img src="img/hahmo (11).jpg" width="150" />
 						</div>
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
+							<img src="img/hahmo (12).jpg" width="150" />
 							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
+							<img src="img/hahmo (1).jpg" width="150" />
+							<img src="img/hahmo (2).jpg" width="150" />
 						</div>
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
-							<img src="img/hahmo.jpg" width="150" />
+							<img src="img/hahmo (3).jpg" width="150" />
+							<img src="img/hahmo (4).jpg" width="150" />
+							<img src="img/hahmo (5).jpg" width="150" />
+							<img src="img/hahmo (6).jpg" width="150" />
 						</div>
 					</div>
 
 				</div><!-- end board area -->
 
-			<!-- Actions and options, buttons, questions area -->
-				<div class="span4" id="options">
+			
+				<div class="span4"><!-- right sidebar -->
+					
+					<div id="cp"><!-- Control panel-->
+						<div class="row-fluid">
+							<div class="span6"><!-- Contrincant/opponent of the player -->
+								<div id="opponent">
+									<p>You are playing against: <span id="contrincant"></span></p>
+								</div>
+							</div>
+							<div class="span6"><!-- Image of the player -->
+								<p>Sinun hahmosi<span id="you"></span></p>
+								<div id="hahmosi">
+								<!--the hahmo -->
+								</div>
+							</div>
+						</div>
+					</div><!-- end Control panel -->
 
+					<div id="features">
+						<div class="row-fluid">
+							<div class="span4">
+								<div id="carousel-eyes"><!--Carousel for eyes-->
+									<img src="img/eyetype1.jpg"/>
+									<img src="img/eyetype2.jpg"/>
+									<img src="img/eyetype3.jpg"/>
+									<img src="img/eyetype4.jpg"/>
+									<img src="img/eyetype5.jpg"/>
+								</div>
+							</div>
+							<div class="span4">
+								<div id="carousel-nose"><!--carousel for nose -->
+									<img src="img/nosetype1.jpg"/>
+									<img src="img/nosetype2.jpg"/>
+									<img src="img/nosetype3.jpg"/>
+									<img src="img/nosetype4.jpg"/>
+								</div>
+							</div>
+							<div class="span4">
+								<div id="carousel-mouth"><!--carousel for mouth-->
+									<img src="img/nosetype1.jpg"/>
+									<img src="img/nosetype2.jpg"/>
+									<img src="img/nosetype3.jpg"/>
+									<img src="img/nosetype4.jpg"/>
+									<img src="img/nosetype4.jpg"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="span6">
+								<div id="carousel-hair"><!--carousel for hair-->
+									<img src="img/hairstyle1.jpg"/>
+									<img src="img/hairstyle2.jpg"/>
+									<img src="img/hairstyle3.jpg"/>
+									<img src="img/hairstyle4.jpg"/>
+									<img src="img/hairstyle5.jpg"/>
+									<img src="img/hairstyle6.jpg"/>
+								</div>
+							</div>
+							<div class="span6">
+								<div id="carousel-skin"><!--carousel for skin-->
+									<img src="img/skincolor1.jpg"/>
+									<img src="img/skincolor2.jpg"/>
+									<img src="img/skincolor3.jpg"/>
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="optbtns">
+									<button class="btn long-btn btn-info" id="btn-ask">Kysy</button>
+									<button class="btn long-btn btn-success" id="btn-guess">Arvaa</button>
+								</div>
+							</div>
+						</div>
+					</div><!-- end of features-->
+				</div> <!-- end of right sidebar -->
+
+				<div class="span4" id="singlequestion"><!-- single question right side bar-->
 					<div class="row-fluid">
-						<div id="optbtns">
-							<div class="span6">
-								<button class="btn long-btn btn-info" id="btn-ask">KYSY</button>
-							</div>
-							<div class="span6">
-								<button class="btn long-btn btn-success" id="btn-guess">ARVAA KUKA</button>
-							</div>
+						<div class="span12" id="askingFeat">
+							<p><span id="opp"></span>
+								is asking you if you have...
+								<br/>
+								<span id="feature"></span>
+								<div class="optbtns">
+									<button class="btn btn-success long-btn" id="yes">Kyllä</button>
+									<button class="btn btn-danger long-btn" id="no">Ei</button>
+								</div>
+							</p>
+						</div>
+					</div>
+				</div><!-- end of single question right sidebar -->
+
+				<div class="span4" id="readyBtn">
+					<div class="row-fluid">
+						<div class="span12 optbtns">
+							<div id="checkFeat"></div>
+							<button class="btn btn-success long-btn" id="ready">Ready</button>
 						</div>
 					</div>
 				</div>
-
-				<div class="span4" id="questions">
-
-					<div class="row-fluid">
-						<div class="span4">
-							<div id="carousel-eyes"><!--Carousel for eyes-->
-								<img src="img/eyetype1.jpg"/>
-								<img src="img/eyetype2.jpg"/>
-								<img src="img/eyetype3.jpg"/>
-								<img src="img/eyetype4.jpg"/>
-								<img src="img/eyetype5.jpg"/>
-							</div>
-						</div>
-						<div class="span4">
-							<div id="carousel-nose"><!--carousel for nose -->
-								<img src="img/nosetype1.jpg"/>
-								<img src="img/nosetype2.jpg"/>
-								<img src="img/nosetype3.jpg"/>
-								<img src="img/nosetype4.jpg"/>
-							</div>
-						</div>
-						<div class="span4">
-							<div id="carousel-mouth"><!--carousel for mouth-->
-								<img src="img/nosetype1.jpg"/>
-								<img src="img/nosetype2.jpg"/>
-								<img src="img/nosetype3.jpg"/>
-								<img src="img/nosetype4.jpg"/>
-								<img src="img/nosetype4.jpg"/>
-							</div>
-						</div>
-					</div>
-
-					<div class="row-fluid">
-						<div class="span6">
-							<div id="carousel-hair"><!--carousel for hair-->
-								<img src="img/hairstyle1.jpg"/>
-								<img src="img/hairstyle2.jpg"/>
-								<img src="img/hairstyle3.jpg"/>
-								<img src="img/hairstyle4.jpg"/>
-								<img src="img/hairstyle5.jpg"/>
-								<img src="img/hairstyle6.jpg"/>
-							</div>
-						</div>
-						<div class="span6">
-							<div id="carousel-skin"><!--carousel for skin-->
-								<img src="img/skincolor1.jpg"/>
-								<img src="img/skincolor2.jpg"/>
-								<img src="img/skincolor3.jpg"/>
-							</div>
-							
-						</div>
-						<div id="ready"></div>
-					</div>
-				</div> <!-- end of questions area -->
 
 			</div><!-- finish last row-fluid-->
 		

@@ -32,14 +32,12 @@ io.sockets.on('connection', function(socket){
 		// callback to the client (send back data to the client)
 	socket.on('new user', function(data, callback){
 		//check if another user online
-		if(data.user in users){
+		if(data in users){
 			callback(false);
 		} else {
 			callback(true);
 			//add the nickname to the socket --> a property of the socket
-			console.log('this is the hahmo: '+data.pic);
-			socket.nickname = data.user;
-			socket.picture = data.pic;
+			socket.nickname = data;
 			users[socket.nickname] = socket;
 
 			updateNicknames();
@@ -52,6 +50,33 @@ io.sockets.on('connection', function(socket){
 		//io.sockets.emit('usernames', Object.keys(users));
 		io.sockets.emit('usernames', Object.keys(users));
 	}
+
+	socket.on('contrincant', function(data) {
+		console.log('the name of the selected contrincant: '+data);
+		//if data = contrincant name
+		//socket.contrincant = data;
+		//the contrincant should get the board
+		users[data].emit('start playing',{nick: socket.nickname});
+	});
+
+	socket.on('asking question', function(data){
+		//the contrincant gets the question to answer yes or no
+		users[data.opp].emit('asked a question',{nick: socket.nickname, feat: data.feat});
+	});
+
+	socket.on('yes has feature', function(data){
+		//the player gets the affirmative answer
+		users[data.opp].emit('yes to feature', {nick: socket.nickname, feat: data.feat});
+	});
+
+	socket.on('others turn', function(data){
+		users[data].emit('your turn');
+	});
+
+
+
+
+
 
 	// 1.receive messages
 	socket.on('send message', function(data, callback){

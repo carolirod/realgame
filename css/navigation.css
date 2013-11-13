@@ -1,5 +1,5 @@
 /** CSS document navigation betweeen panels**/
-#startscreen, #boardscreen, #questions {
+#startscreen, #boardscreen, #singlequestion, #readyBtn {
 	display: none;
 }
 
@@ -31,4 +31,13 @@
 	font-weight: 800;
 	padding-top: 3%;
 	padding-bottom: 3%;
+}
+#start-screen-btn {
+	padding: 25%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	width: 100%;
+	margin-top: 3%;
+	font-size: 26px;
+	font-weight: 800;
 }

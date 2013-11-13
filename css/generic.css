@@ -4,21 +4,75 @@
 @import url("skin.css");
 @import url("coolcar.css");
 
+html {
+	cursor: url(../img/cursor.png), auto;
+}
+
 body {
 	margin: 0;
 	text-align: left;
-	cursor: url(../img/cursor.png), auto;
 }
 button:hover{
 	cursor: url(../img/pointer.png), auto;
 }
+
+/* Scroll instructions */
+	/*just the text class*/
+	.inst {
+		font-style: italic;
+		color: #666666;
+		margin: 3%;
+		line-height: 25px;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+#scroll-ins{
+	height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;	
+}
+
+#scroll-ins{
+    scrollbar-face-color: #367CD2;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+#scroll-ins::-webkit-scrollbar {
+    width: 6%;
+}
+ 
+/* Track */
+#scroll-ins::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}
+ 
+/* Handle */
+#scroll-ins::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    background: rgba(247,115,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+/* --------------------- */
+
+
 #start-screen-btn {
 	cursor: url(../img/pointer.png), auto;
 }
 
-.inst {
-	font-style: italic;
-	color: #666666;
+.optbtns {
+	margin: 2% 0 2% 0;
+}
+.optbtns button{
+	margin-top: 2%;
 }
 
 .next {
@@ -26,17 +80,14 @@ button:hover{
 }
 						/* LONG and TALL BUTTONS*/
 .long-btn {
-	padding-left: 25%;
-	padding-right: 25%;
+	width: 100%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	font-size: 35px;
 }
 
 .previous {
 	float: left;
-}
-
-#msg {
-	font-style: italic;
-	color: gray;
 }
 
 #loginscreen {
@@ -45,23 +96,24 @@ button:hover{
 
 #welcomeIMG {
 	width: 25%;
-	margin-left: 70%;
+	float:left;
 }
 
 /* Control panel */
-#cp {
+#instructions {
+	font-size: 20px;
+	font-style: italic;
+	margin-bottom: 1%;
 	background: rgba(0, 0, 0, 0.25);	
-	margin-bottom: 2%;
-}
-#nameboard, #action, #character {
 	opacity: 1.0;
 	display: inline-block;
 	padding: 2%;
 	padding-right: 5%;
 }
-#character p {
+#cp p {
 	margin: 0;
+	font-size: 20px;
 }
 #hahmosi {
-	width: 30%;
+	width: 100%;
 }
