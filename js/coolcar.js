@@ -1,59 +1,59 @@
 $(function() {
+	/* Carousel of the logining page, choose your hahmo*/
 	$('#carousel-hahmo').carouFredSel({
 		responsive: true,
 		width: '100%',
-		height: '100%',
+		height: 260,
 		scroll: {
-			items: 3,
+			items: 'page',
+			easing: 'quadratic',
 			pauseOnHover: true
 		},
 		items: {
-			width: 250,
-			height: 'variable',
+			width: 150,
+			height: 250,
 			visible: {
 				min: 1,
 				max: 4,
 				start: 'random'
 			}
-		}
+		},
+		prev : { 
+		  button : "#prevCarHah",
+		  key : "left"
+		},
+		next : { 
+		  button : "#nextCarHah",
+		  key : "right"
+		}		
 	});
 
-	$('#carousel-eyes').carouFredSel({
+	/* Carousels for the features */
+	$('#carousel-features').carouFredSel({
 		responsive: true,
 		width:'100%',
+		height: 160,
 		scroll: {
-			items: 1,
-			pauseOnHover: true,
-			duration: 800
-		},
-		items: {
-			visible: {
-				min: 1,
-				max: 1,
-				start:'random'
-			},
-			width: 150
-		},
-	}, {
-		wrapper: {
-			classname: 'extrawrap'
-		}
-	});
-
-	$('#carousel-nose').carouFredSel({
-		responsive: true,
-		width:'100%',
-		scroll: {
-			items: 1,
+			items: 'page',
+			duration: 800,
 			pauseOnHover: true
 		},
 		items: {
+			width:150,
+			height:150,
 			visible: {
-				min: 1,
-				max: 1,
+				min: 3,
+				max: 6,
 				start:'random'
-			},
-			width: 150
+			}
+		},
+		prev : { 
+		  button : "#prevCarFeat",
+		  key : "left"
+		},
+		next : { 
+		  button : "#nextCarFeat",
+		  key : "right"
 		},
 	}, {
 		wrapper: {
@@ -61,66 +61,4 @@ $(function() {
 		}
 	});
 
-	$('#carousel-mouth').carouFredSel({
-		responsive: true,
-		width:'100%',
-		scroll: {
-			items: 1,
-			pauseOnHover: true
-		},
-		items: {
-			visible: {
-				min: 1,
-				max: 1,
-				start:'random'
-			},
-			width: 150
-		},
-	}, {
-		wrapper: {
-			classname: 'extrawrap'
-		}
-	});
-
-	$('#carousel-skin').carouFredSel({
-		responsive: true,
-		width:'100%',
-		scroll: {
-			items: 1,
-			pauseOnHover: true
-		},
-		items: {
-			visible: {
-				min: 1,
-				max: 1,
-				start:'random'
-			},
-			width: 150
-		},
-	}, {
-		wrapper: {
-			classname: 'extrawrap'
-		}
-	});
-
-	$('#carousel-hair').carouFredSel({
-		responsive: true,
-		width:'100%',
-		scroll: {
-			items: 1,
-			pauseOnHover: true
-		},
-		items: {
-			visible: {
-				min: 1,
-				max: 1,
-				start:'random'
-			},
-			width: 150
-		},
-	}, {
-		wrapper: {
-			classname: 'extrawrap'
-		}
-	});
 });

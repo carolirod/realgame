@@ -1,5 +1,5 @@
 /** CSS document navigation betweeen panels**/
-#startscreen, #boardscreen, #singlequestion, #readyBtn {
+#startscreen, #boardscreen, #singlequestion, #readyArea, #readyArea2, #guessingArea, #playAgain {
 	display: none;
 }
 
@@ -7,37 +7,46 @@
 	-webkit-filter: grayscale(100%);
 	-moz-filter: grayscale(100%);
 	filter: grayscale(100%);
+	filter: url(../filters.svg#grayscale); /* Firefox 3.5+ */
+	border-style: groove;
 }
 
-#userList li {
-	background-color: #4D4D4D;
-	font-size: 30px;
-	color: #ffffff;
-	font-weight: 800;
-	cursor: url(../img/pointer.png), auto;
-	padding: 3%;
+.feature {
+	border-color:#000000;
+}
+
+.hahmo {
+	border-style: groove;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: url(../filters.svg#grayscale); /* Firefox 3.5+ */
 }
 
 .pointer{
 	cursor: url(../img/pointer.png), auto;
 }
 /* BUTTONS */
-#play {
+#play, #start-screen-btn, #btn-ask, #btn-guess {
 	font-size: 40px;
+}
+
+#play {
 	padding-top: 5%;
 	padding-bottom: 5%;
 }
+
 #askFeature {
 	font-weight: 800;
 	padding-top: 3%;
 	padding-bottom: 3%;
 }
+
 #start-screen-btn {
 	padding: 25%;
 	padding-top: 2%;
 	padding-bottom: 2%;
 	width: 100%;
 	margin-top: 3%;
-	font-size: 26px;
 	font-weight: 800;
 }

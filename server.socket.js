@@ -7,10 +7,9 @@ var express = require('express'),
 	app = express(),
 	server = require('http').createServer(app),
 	io = require('socket.io').listen(server),
-	users = {}, // values will be the sockets
-	characters = {}; //values will be the pics files
+	users = {}; // values will be the sockets	
 
-server.listen(8080);
+server.listen(11339);
 
 //routing
 app.get('/', function(req, res){
@@ -38,6 +37,7 @@ io.sockets.on('connection', function(socket){
 			callback(true);
 			//add the nickname to the socket --> a property of the socket
 			socket.nickname = data;
+			socket.occupied = false; //Boolean false if free to play, true if playing already
 			users[socket.nickname] = socket;
 
 			updateNicknames();
@@ -45,39 +45,72 @@ io.sockets.on('connection', function(socket){
 	});
 
 	//update usernames' list
-	function updateNicknames(){
+	function updateNicknames(player1, player2){
 		// send respond to client, the object key
-		//io.sockets.emit('usernames', Object.keys(users));
 		io.sockets.emit('usernames', Object.keys(users));
 	}
 
+	//display startscreen to opponent
 	socket.on('contrincant', function(data) {
-		console.log('the name of the selected contrincant: '+data);
-		//if data = contrincant name
-		//socket.contrincant = data;
+		console.log('the name of the selected contrincant: '+data+', will play against: '+socket.nickname);
+		
 		//the contrincant should get the board
 		users[data].emit('start playing',{nick: socket.nickname});
+		
+		console.log('These users: '+ users[socket.nickname] +' and '+ users[data] +' are playing, so they are removed from the user list');
+		delete users[socket.nickname];
+		delete users[data];
 	});
 
+	
+	//Asking question
 	socket.on('asking question', function(data){
+		var $feature = data.feat;
 		//the contrincant gets the question to answer yes or no
-		users[data.opp].emit('asked a question',{nick: socket.nickname, feat: data.feat});
+		users[data.opp].emit('asked a question',{nick: socket.nickname, feat: $feature});
+	});
+	
+	//Guessing hahmo
+	socket.on('hahmo to guess', function(data) {
+		var $hahmoSource = data.hahmo;
+		users[data.opp].emit('guessing your hahmo', { hahmo: $hahmoSource, opp: socket.nickname});
 	});
 
 	socket.on('yes has feature', function(data){
+		var $feature = data.feat;
 		//the player gets the affirmative answer
-		users[data.opp].emit('yes to feature', {nick: socket.nickname, feat: data.feat});
+		users[data.opp].emit('yes to feature', {nick: socket.nickname, feat: $feature});
+	});
+	socket.on('no has feature', function(data){
+		var $feature = data.feat;
+		//the player gets the affirmative answer
+		users[data.opp].emit('no to feature', {nick: socket.nickname, feat: $feature});
+	});
+
+	socket.on('you win', function(data) {
+		users[data].emit('I win!', socket.nickname, function(data){});
+		updateNicknames(); //update usernames in all client's views
 	});
 
 	socket.on('others turn', function(data){
 		users[data].emit('your turn');
 	});
 
+	socket.on('you wait', function(data){
+		users[data].emit('I wait');
+	});
 
 
+	//when disconnect
+	socket.on('disconnect', function(data){
+		if(!socket.nickname){
+			return;
+		}
+		delete users[socket.nickname];
+		updateNicknames();			
+	});
 
-
-
+//not in use right now
 	// 1.receive messages
 	socket.on('send message', function(data, callback){
 		var msg = data.trim();
@@ -109,14 +142,6 @@ io.sockets.on('connection', function(socket){
 		
 		//sending to everyone, except me
 		//socket.broadcast.emit('new message',data);
-	});
-
-	socket.on('disconnect', function(data){
-		if(!socket.nickname){
-			return;
-		}
-		delete users[socket.nickname];
-		updateNicknames();			
 	});
 
 });
